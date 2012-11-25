@@ -1,0 +1,32 @@
+<div class="jumbotron">
+	<h1>Datasets for SmartOS!</h1>
+	<p class="lead">most of the datasets provided are build by <a href="http://www.joyent.com/" target="_blank">joyent</a>
+		<br />
+		but there is also a growing list of datasets built by the community.</p>
+</div>
+
+<div ng-show="latest.length > 0">
+	<table class="table table-condensed table-hover table-striped">
+		<caption><h3 align="left">latest versions</h3></caption>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Version</th>
+				<th>OS</th>
+				<th>Published</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="ds in latest" ng-click="editManifest(ds.uuid)">
+				<td>{{ds.name}}</td>
+				<td>{{ds.version}}</td>
+				<td>{{ds.os}}</td>
+				<td date-from-now="ds.published_at">{{ds.published_at}}</td>
+				<td ng-switch on="ds.getCreator()">
+					<span ng-switch-when="community" class="label label-info">community</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
