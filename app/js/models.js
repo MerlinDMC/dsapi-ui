@@ -380,7 +380,12 @@ function DatasetJsonGenerator(dataset) {
     ],
     'size': [
       'integer',
-      10240,
+      null,
+      [ 'kvm' ]
+    ],
+    'image_size': [
+      'integer',
+      null,
       [ 'kvm' ]
     ],
     'model': [
