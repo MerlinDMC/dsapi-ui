@@ -508,7 +508,7 @@ function DatasetJsonGenerator(dataset) {
         _disks.push({
           'boot': true,
           'model': _dataset.manifest.disk_driver,
-          'size': _dataset.manifest.image_size,
+          'image_size': _dataset.manifest.image_size,
           'image_uuid': _dataset.uuid
         });
       }
@@ -532,6 +532,8 @@ function DatasetJsonGenerator(dataset) {
   this.generate = function() {
     var json = {};
     var name, i, len;
+
+    json['brand'] = brand;
 
     // add simple options
     for (name in _json_option_rules) {
