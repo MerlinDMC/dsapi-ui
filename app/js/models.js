@@ -219,7 +219,7 @@ function DatasetJsonGenerator(dataset) {
    * type: boolean|integer|string
    */
   var _json_option_rules = {
-    'dataset_uuid': [
+    'image_uuid': [
       'string',
       function() {
         return _dataset.uuid;
