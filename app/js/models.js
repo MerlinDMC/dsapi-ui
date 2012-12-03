@@ -268,7 +268,7 @@ function DatasetJsonGenerator(dataset) {
 
         result = 2 * getOptionValue('max_physical_memory');
 
-        return Math.min(4096, result);
+        return (result < 4096) ? result : getOptionValue('max_physical_memory');
       },
       [ 'joyent' ]
     ],
