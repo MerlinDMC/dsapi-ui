@@ -264,11 +264,11 @@ function DatasetJsonGenerator(dataset) {
 
         if (_dataset.getBrand() === 'kvm') {
           result = getOptionValue('ram');
+        } else {
+          result = getOptionValue('max_physical_memory');
         }
 
-        result = 2 * getOptionValue('max_physical_memory');
-
-        return (result < 4096) ? result : getOptionValue('max_physical_memory');
+        return result;
       },
       [ 'joyent' ]
     ],
