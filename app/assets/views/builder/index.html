@@ -33,6 +33,12 @@
 				<input type="text" id="ds-domain" class="input-xxlarge" placeholder="example.com" ng-model="form.settings.dns_domain">
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label" for="ds-resolvers">Resolvers</label>
+			<div class="controls">
+				<input type="text" id="ds-resolvers" class="input-xxlarge" placeholder="8.8.8.8, 8.8.4.4" ng-model="form.settings.resolvers">
+			</div>
+		</div>
 
 		<div ng-show="isJoyent()">
 			<!-- joyent / ram -->

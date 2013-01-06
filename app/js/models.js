@@ -216,7 +216,7 @@ function DatasetJsonGenerator(dataset) {
   var brand = _dataset.getBrand();
 
   /**
-   * type: boolean|integer|string
+   * type: boolean|integer|string|array
    */
   var _json_option_rules = {
     'image_uuid': [
@@ -243,6 +243,11 @@ function DatasetJsonGenerator(dataset) {
     ],
     'dns_domain': [
       'string',
+      null,
+      [ 'kvm', 'joyent' ]
+    ],
+    'resolvers': [
+      'array',
       null,
       [ 'kvm', 'joyent' ]
     ],
@@ -453,6 +458,12 @@ function DatasetJsonGenerator(dataset) {
             value = parseInt(value);
             if (!value) {
               value = 0;
+            }
+          break;
+          case 'array':
+            value = value.toString().split(/[\s,]+/);
+            if (!value) {
+              value = null;
             }
           break;
           default:
