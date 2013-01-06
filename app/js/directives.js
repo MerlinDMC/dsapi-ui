@@ -46,7 +46,7 @@ angular.module('dsapi.bootstrap', [])
     };
   })
 
-  .directive('navLocation', function($location) {
+  .directive('navLocation', ['$location', function($location) {
     var match = function(href, url) {
       var href_a = href.split('/');
       var url_a = url.split('/');
@@ -78,4 +78,4 @@ angular.module('dsapi.bootstrap', [])
         '</li>',
       replace: true
     };
-  });
+  }]);

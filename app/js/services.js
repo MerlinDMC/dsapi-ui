@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('dsapi.services', [], function($provide) {
-  $provide.factory('dsapiDatasets', function($http, $q) {
+angular.module('dsapi.services', [], ['$provide', function($provide) {
+  $provide.factory('dsapiDatasets', ['$http', '$q', function($http, $q) {
     var datasets = new DatasetList();
     var deferred = $q.defer();
     var service = {
@@ -32,5 +32,5 @@ angular.module('dsapi.services', [], function($provide) {
       });
 
     return deferred.promise;
-  });
-});
+  }]);
+}]);
