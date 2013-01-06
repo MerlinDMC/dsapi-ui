@@ -1,8 +1,12 @@
 'use strict';
 
-function HomeCtrl($scope, $location, dsapiDatasets) {
+function HomeCtrl($scope, $routeParams, $location, dsapiDatasets) {
   $scope.datasets = null;
   $scope.latest = null;
+
+  if ($routeParams.query) {
+    $scope.query = $routeParams.query;
+  }
 
   dsapiDatasets.then(function(instance) {
     $scope.datasets = instance.all();
@@ -14,7 +18,7 @@ function HomeCtrl($scope, $location, dsapiDatasets) {
   };
 }
 
-HomeCtrl.$inject = [ '$scope', '$location', 'dsapiDatasets' ];
+HomeCtrl.$inject = [ '$scope', '$routeParams', '$location', 'dsapiDatasets' ];
 
 function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
   $scope.dataset = null;
