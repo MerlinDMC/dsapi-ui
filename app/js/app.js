@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dsapi', [ 'dsapi.services', 'dsapi.directives', 'dsapi.bootstrap', 'dsapi.bootstrap.accordion', 'dsapi.filters' ])
+angular.module('dsapi', [ 'dsapi.services', 'dsapi.directives', 'dsapi.bootstrap', 'dsapi.filters' ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/home', { templateUrl: 'views/home.html', controller: HomeCtrl });
     $routeProvider.when('/configure/search/:query', { templateUrl: 'views/configure.html', controller: HomeCtrl });
