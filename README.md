@@ -12,7 +12,7 @@ The complete UI is build client side and needs no special server side technology
 - [Bootstrap](http://twitter.github.com/bootstrap/)
 
 ## development
-1. install grunt `npm install -g grunt` (you'll need to have nodejs and npm already installed)
+1. install brunch `npm install -g brunch` (you'll need to have nodejs and npm already installed)
 2. install development dependencies with `npm install`
 3. build the project with `brunch build`
 4. upload everything in `_public/` to your destination server
