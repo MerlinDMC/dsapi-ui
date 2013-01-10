@@ -17,7 +17,7 @@ angular.module('dsapi.directives', [])
 angular.module('dsapi.bootstrap', [])
   .directive('navBarTop', function() {
     return {
-      restrict: 'E',
+      restrict: 'EC',
       transclude: true,
       scope: {
         'title': '@'
@@ -37,7 +37,7 @@ angular.module('dsapi.bootstrap', [])
 
   .directive('navBarPills', function() {
     return {
-      restrict: 'E',
+      restrict: 'EC',
       transclude: true,
       template:
         '<ul class="nav nav-pills pull-right" ng-transclude>' +
@@ -62,7 +62,7 @@ angular.module('dsapi.bootstrap', [])
     }
 
     return {
-      restrict: 'E',
+      restrict: 'EC',
       transclude: true,
       scope: {
         'href': '@'
