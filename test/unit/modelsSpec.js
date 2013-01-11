@@ -298,10 +298,10 @@ describe('DatasetJsonGenerator', function() {
       generator = dataset.getGenerator();
     });
 
-    it('should include the dataset_uuid automatically', function() {
+    it('should include the image_uuid automatically', function() {
       json = generator.generate();
 
-      expect(json.dataset_uuid).toBe(dataset.uuid);
+      expect(json.image_uuid).toBe(dataset.uuid);
     });
 
     it('should set the autoboot flag', function() {
@@ -342,7 +342,7 @@ describe('DatasetJsonGenerator', function() {
       json = generator.generate();
 
       expect(json.max_physical_memory).toBe(123);
-      expect(json.max_swap).toBe(2 * 123);
+      expect(json.max_swap).toBe(123);
 
       generator.setOption('max_swap', 123);
 
