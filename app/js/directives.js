@@ -26,7 +26,7 @@ angular.module('dsapi.bootstrap', [])
         '<div class="navbar navbar-fixed-top">' +
           '<div class="navbar-inner">' +
             '<div class="container">' +
-              '<a class="brand" href="#/">{{title}}</a>' +
+              '<a class="brand" href="#!/">{{title}}</a>' +
               '<ul class="nav" ng-transclude></ul>' +
             '</div>' +
           '</div>' +
@@ -48,6 +48,12 @@ angular.module('dsapi.bootstrap', [])
 
   .directive('navLocation', ['$location', function($location) {
     var match = function(href, url) {
+      var _slash = href.indexOf('/');
+
+      if (_slash > 0) {
+        href = href.substring(_slash, href.length - _slash + 1);
+      }
+
       var href_a = href.split('/');
       var url_a = url.split('/');
       var i;
