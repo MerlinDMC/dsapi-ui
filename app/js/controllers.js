@@ -42,6 +42,12 @@ function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
     return object;
   }
 
+  function loadBuilderDefaults(options) {
+    for (k in options) {
+      $scope.form.settings[k] = options[k];
+    }
+  }
+
   $scope.addNic = function() {
     clearObject($scope.temp);
 
@@ -291,6 +297,10 @@ function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
 
   dsapiDatasets.then(function(instance) {
     $scope.dataset = instance.by_uuid($routeParams.uuid);
+
+    if ($scope.dataset.manifest._builder) {
+      loadBuilderDefaults($scope.dataset.manifest._builder);
+    }
   });
 
   $scope.valid_filesystem_types = ['lofs'];

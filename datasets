@@ -561,7 +561,12 @@
         "name": "admin"
       }
     ],
-    "generate_passwords": true
+    "generate_passwords": true,
+    "_builder": {
+      "max_physical_memory": 512,
+      "tmpfs": 1024,
+      "quota": 32
+    }
   },
   {
     "name": "ubuntu-12.04",
