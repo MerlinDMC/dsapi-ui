@@ -76,12 +76,21 @@
 
 		<div id="sub-autoboot" class="collapse">
 			<div ng-show="isJoyent()">
-				<!-- joyent / swap + quota -->
+				<!-- joyent / swap + tmpfs + quota -->
 				<div class="control-group">
 					<label class="control-label" for="ds-swap">Swap</label>
 					<div class="controls">
 						<div class="input-append">
 							<input type="text" id="ds-swap" class="input-small" placeholder="256" ng-model="form.settings.max_swap">
+							<span class="add-on">MB</span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="ds-tmpfs">tmpfs</label>
+					<div class="controls">
+						<div class="input-append">
+							<input type="text" id="ds-tmpfs" class="input-small" placeholder="256" ng-model="form.settings.tmpfs">
 							<span class="add-on">MB</span>
 						</div>
 					</div>

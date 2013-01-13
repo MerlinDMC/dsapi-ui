@@ -277,6 +277,11 @@ function DatasetJsonGenerator(dataset) {
       },
       [ 'joyent' ]
     ],
+    'tmpfs': [
+      'integer',
+      null,
+      [ 'joyent' ]
+    ],
     'ram': [
       'integer',
       1024,
