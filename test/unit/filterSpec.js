@@ -58,8 +58,42 @@ describe('Dataset', function() {
       expect(result.length).toBe(1);
     }));
 
-    it('should allow to filter by field', inject(function(searchDatasetsFilter) {
+    it('should allow to filter by complete field', inject(function(searchDatasetsFilter) {
       var result = searchDatasetsFilter(datasets, 'name:test_sdc');
+
+      expect(result.length).toBe(1);
+    }));
+
+    it('should allow to filter by field while typing', inject(function(searchDatasetsFilter) {
+      var result;
+
+      result = searchDatasetsFilter(datasets, 'name:test');
+
+      expect(result.length).toBe(3);
+
+      result = searchDatasetsFilter(datasets, 'name:test_s');
+
+      expect(result.length).toBe(1);
+
+      result = searchDatasetsFilter(datasets, 'name:test_sdc');
+
+      expect(result.length).toBe(1);
+    }));
+
+    it('should always match from the start', inject(function(searchDatasetsFilter) {
+      var result = searchDatasetsFilter(datasets, 'name:community');
+
+      expect(result.length).toBe(0);
+    }));
+
+    it('should allow to filter by uuid', inject(function(searchDatasetsFilter) {
+      var result;
+
+      result = searchDatasetsFilter(datasets, 'uuid:test_sdc');
+
+      expect(result.length).toBe(2);
+
+      result = searchDatasetsFilter(datasets, 'uuid:test_sdc-1111');
 
       expect(result.length).toBe(1);
     }));
