@@ -20,6 +20,14 @@ angular.module('dsapi.filters', [])
       'description'
     ];
 
+    var filterableKeys = [
+      'uuid',
+      'name',
+      'version',
+      'os',
+      'description'
+    ];
+
     var matchManifest = function(manifest, query) {
       if (!query) {
         return true;
@@ -34,8 +42,8 @@ angular.module('dsapi.filters', [])
 
         kv = parts[i].match(/^(\w+):(.+)$/);
 
-        if (kv && searchableKeys.indexOf(kv[1]) >= 0) {
-          if (manifest[kv[1]].toLowerCase() === kv[2]) {
+        if (kv && filterableKeys.indexOf(kv[1]) >= 0) {
+          if (manifest[kv[1]].toLowerCase().indexOf(kv[2].toLowerCase()) === 0) {
             match = true;
           }
         } else {
