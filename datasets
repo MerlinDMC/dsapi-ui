@@ -562,7 +562,7 @@
       }
     ],
     "generate_passwords": true,
-    "_metadata": [
+    "metadata_info": [
       {
         "name": "dsapi_source_name",
         "type": "text",
@@ -582,7 +582,7 @@
         "value": "manifest"
       }
     ],
-    "_builder": {
+    "builder_info": {
       "max_physical_memory": 512,
       "tmpfs": 1024,
       "quota": 32
