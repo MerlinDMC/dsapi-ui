@@ -130,11 +130,11 @@ function Dataset(data) {
     }
   }
 
-  if (this.manifest.hasOwnProperty('_metadata')) {
+  if (this.manifest.hasOwnProperty('metadata_info')) {
     var options;
 
-    for (i in this.manifest._metadata) {
-      options = this.manifest._metadata[i];
+    for (i in this.manifest.metadata_info) {
+      options = this.manifest.metadata_info[i];
 
       if (!options.hasOwnProperty('group')) {
         options['group'] = 'custom';

@@ -298,8 +298,8 @@ function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
   dsapiDatasets.then(function(instance) {
     $scope.dataset = instance.by_uuid($routeParams.uuid);
 
-    if ($scope.dataset.manifest._builder) {
-      loadBuilderDefaults($scope.dataset.manifest._builder);
+    if ($scope.dataset.manifest.builder_info) {
+      loadBuilderDefaults($scope.dataset.manifest.builder_info);
     }
   });
 
