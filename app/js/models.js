@@ -1,8 +1,10 @@
 'use strict';
 
 function MetadataOption(options) {
+  this.group = options.group || '';
+
   this.name = options.name || '';
-  this.title = options.title || '';
+  this.title = options.title || this.name;
   this.description = options.description || '';
 
   this.type = options.type || 'text';
@@ -86,6 +88,7 @@ function Dataset(data) {
   if (this.getBrand() === 'kvm') {
     if (this.manifest.hasOwnProperty('requirements') && this.manifest.requirements.ssh_key) {
       this.metadata.push(new MetadataOption({
+        'group': 'password',
         'title': 'SSH-PubKey',
         'name': 'root_authorized_keys',
         'type': 'text',
@@ -97,30 +100,47 @@ function Dataset(data) {
       for (i in this.manifest.users) {
         var user = this.manifest.users[i];
 
-        this.metadata.push(new MetadataOption({ 
-          title: user.name,
-          name: user.name + '_pw',
-          type: 'password',
-          description: 'sets the password for the user'
+        this.metadata.push(new MetadataOption({
+          'group': 'password',
+          'title': user.name,
+          'name': user.name + '_pw',
+          'type': 'password',
+          'description': 'sets the password for the user'
         }));
       }
     } else {
       if ([ 'smartos', 'smartos64',
             'base', 'base64'].indexOf(this.manifest.name) >= 0) {
         this.metadata.push(new MetadataOption({
-          title: 'root',
-          name: 'root_pw',
-          type: 'password',
-          description: 'sets the password for the user'
+          'group': 'password',
+          'title': 'root',
+          'name': 'root_pw',
+          'type': 'password',
+          'description': 'sets the password for the user'
         }));
 
         this.metadata.push(new MetadataOption({
-          title: 'admin',
-          name: 'admin_pw',
-          type: 'password',
-          description: 'sets the password for the user'
+          'group': 'password',
+          'title': 'admin',
+          'name': 'admin_pw',
+          'type': 'password',
+          'description': 'sets the password for the user'
         }));
       }
+    }
+  }
+
+  if (this.manifest.hasOwnProperty('_metadata')) {
+    var options;
+
+    for (i in this.manifest._metadata) {
+      options = this.manifest._metadata[i];
+
+      if (!options.hasOwnProperty('group')) {
+        options['group'] = 'custom';
+      }
+
+      this.metadata.push(new MetadataOption(options));
     }
   }
 }

@@ -562,6 +562,26 @@
       }
     ],
     "generate_passwords": true,
+    "_metadata": [
+      {
+        "name": "dsapi_source_name",
+        "type": "text",
+        "description": "name for the sync source",
+        "value": "joyent"
+      },
+      {
+        "name": "dsapi_source_url",
+        "type": "text",
+        "description": "url of the sync source",
+        "value": "https://datasets.joyent.com/datasets"
+      },
+      {
+        "name": "dsapi_source_type",
+        "type": "text",
+        "description": "sync type (can be manifest or deep; deep will also mirror the data files)",
+        "value": "manifest"
+      }
+    ],
     "_builder": {
       "max_physical_memory": 512,
       "tmpfs": 1024,

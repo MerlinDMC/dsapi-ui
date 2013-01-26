@@ -475,7 +475,7 @@
 				<tr ng-repeat="md in form.metadata">
 					<td>{{md.title}}</td>
 					<td>{{md.value | shorten:48}}</td>
-					<td ng-switch on="md.type">
+					<td ng-switch on="md.group">
 						<span ng-switch-when="password" class="label label-important">password</span>
 						<span ng-switch-when="string" class="label label-success">string</span>
 						<span ng-switch-when="custom" class="label label-warning">custom</span>
@@ -514,7 +514,7 @@
 			<div class="modal-body">
 				<div class="control-group">
 					<div class="controls">
-						<select ng-model="form._selected_metadata" ng-change="addMetadata(form._selected_metadata)" ng-options="md.title group by md.type for md in dataset.metadata">
+						<select ng-model="form._selected_metadata" ng-change="addMetadata(form._selected_metadata)" ng-options="md.title group by md.group for md in dataset.metadata">
 							<option value="">-- choose from template --</option>
 						</select>
 					</div>
