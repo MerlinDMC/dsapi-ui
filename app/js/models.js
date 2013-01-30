@@ -79,9 +79,16 @@ function Dataset(data) {
 
   /* determine usable metadata and populate metadata list */
   this.metadata.push(new MetadataOption({
-    'name': 'user_script',
+    'name': 'user-script',
     'title': 'User-Script',
     'description': 'bash script to be run at first boot used to provision even more stuff automatically',
+    'type': 'text'
+  }));
+
+  this.metadata.push(new MetadataOption({
+    'name': 'user-data',
+    'title': 'User-Data',
+    'description': 'data that can be used by the user-script',
     'type': 'text'
   }));
 
@@ -110,7 +117,8 @@ function Dataset(data) {
       }
     } else {
       if ([ 'smartos', 'smartos64',
-            'base', 'base64'].indexOf(this.manifest.name) >= 0) {
+            'base', 'base64'].indexOf(this.manifest.name) >= 0
+          || this.manifest.os === 'smartos') {
         this.metadata.push(new MetadataOption({
           'group': 'password',
           'title': 'root',
