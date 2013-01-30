@@ -110,7 +110,8 @@ function Dataset(data) {
       }
     } else {
       if ([ 'smartos', 'smartos64',
-            'base', 'base64'].indexOf(this.manifest.name) >= 0) {
+            'base', 'base64'].indexOf(this.manifest.name) >= 0
+          || this.manifest.os === 'smartos') {
         this.metadata.push(new MetadataOption({
           'group': 'password',
           'title': 'root',
