@@ -85,6 +85,13 @@ function Dataset(data) {
     'type': 'text'
   }));
 
+  this.metadata.push(new MetadataOption({
+    'name': 'user-data',
+    'title': 'User-Data',
+    'description': 'data that can be used by the user-script',
+    'type': 'text'
+  }));
+
   if (this.getBrand() === 'kvm') {
     if (this.manifest.hasOwnProperty('requirements') && this.manifest.requirements.ssh_key) {
       this.metadata.push(new MetadataOption({
