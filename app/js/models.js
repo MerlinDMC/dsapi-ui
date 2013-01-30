@@ -79,7 +79,7 @@ function Dataset(data) {
 
   /* determine usable metadata and populate metadata list */
   this.metadata.push(new MetadataOption({
-    'name': 'user_script',
+    'name': 'user-script',
     'title': 'User-Script',
     'description': 'bash script to be run at first boot used to provision even more stuff automatically',
     'type': 'text'
