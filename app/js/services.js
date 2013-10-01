@@ -23,7 +23,7 @@ angular.module('dsapi.services', [], ['$provide', function($provide) {
     };
 
     /* initialize datasets list */
-    $http.get('/datasets')
+    $http.get('/api/datasets')
       .success(function(data) {
         datasets.pushMany(data);
 
