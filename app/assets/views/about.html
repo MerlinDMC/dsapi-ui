@@ -4,16 +4,38 @@
 <p>datasets.at is a mirror for SmartOS datasets/images located in Germany.</p>
 
 <h2>How can I use this mirror?</h2>
-<p>To be able to use datasets.at as a source for datasets you need to add <code>http://datasets.at/datasets</code> to the sources list of <code>imgadm</code> and refresh the dataset list.</p>
+<p>To be able to use datasets.at as a source for datasets you need to add <code>http://datasets.at/</code> to the sources list of <code>imgadm</code> and refresh the dataset list.</p>
 <p>datasets.at syncs with the default dataset server provided by joyent so it is also possible to replace the default entry completely.</p>
+
+<p>First you should determine which version of imgadm your SmartOS box is using by executing <code>imgadm --version</code></p>
+<p>You'll either see a version like: <code>imgadm 2.0.2</code> which indicates you're on a more recent version of SmartOS or the default command listing (because the older imgadm does not know about the --version switch)</p>
+
+<h4>If you're using an older version of SmartOS with imgadm v1</h4>
 <pre>echo "http://datasets.at/datasets" > /var/db/imgadm/sources.list
 imgadm update</pre>
 
+<h4>If you're using a more recent version of SmartOS with imgadm v2</h4>
+<pre>imgadm sources -a http://datasets.at/
+imgadm sources -d https://images.joyent.com
+imgadm update</pre>
+<p>The source deletion of <code>https://images.joyent.com</code> can be skipped - it will just ensure that you'll grab every image from this mirror</p>
+
+<div class="alert alert-info">
+  It is also possible to use vim and edit the sources list manually by executing <code>imgadm sources -e</code>.
+</div>
+
 <h2>How do I switch back to the default source?</h2>
+
+<h4>If you're using an older version of SmartOS with imgadm v1</h4>
 <pre>echo "https://datasets.joyent.com/datasets" > /var/db/imgadm/sources.list
+imgadm update</pre>
+
+<h4>If you're using a more recent version of SmartOS with imgadm v2</h4>
+<pre>imgadm sources -d http://datasets.at/
+imgadm sources -a https://images.joyent.com
 imgadm update</pre>
 
 <h2>What is the &laquo;Builder&raquo;?</h2>
 <p>The builder is a short <span class="text-warning">(work-in-progress)</span> formula to generate a JSON file for use with <code>vmadm</code> on a SmartOS host.</p>
 <p>The formular is able to dynamically add nics, disks (or filesystems) and metadata to the JSON file.
-	It also tries to simplify adding metadata by providing a list of supported metadata keys for the selected dataset/image.</p>
+  It also tries to simplify adding metadata by providing a list of supported metadata keys for the selected dataset/image.</p>
