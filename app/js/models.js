@@ -71,7 +71,8 @@ function Dataset(data) {
     'os',
     'description',
     'uuid',
-    'published_at'
+    'published_at',
+    'stats_info'
   ];
 
   for (i in proxy_attrs) {
