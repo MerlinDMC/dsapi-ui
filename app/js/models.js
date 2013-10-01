@@ -669,8 +669,13 @@ function DatasetJsonGenerator(dataset) {
     // add metadata
     if (_metadata.length > 0) {
       json.customer_metadata = {};
+      json.internal_metadata = {};
 
       for (i = 0, len = _metadata.length; i < len; i++) {
+        if (_metadata[i].name.match(/_pw$/)) {
+          json.internal_metadata[_metadata[i].name] = _metadata[i].value;
+        }
+
         json.customer_metadata[_metadata[i].name] = _metadata[i].value;
       }
     }
