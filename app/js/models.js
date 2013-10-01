@@ -44,6 +44,10 @@ function Dataset(data) {
   };
 
   this.getCreator = function() {
+    if (data.provider) {
+      return data.provider;
+    }
+
     switch(data.creator_name) {
       case 'sdc':
       case 'jpc':
