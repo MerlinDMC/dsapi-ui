@@ -29,6 +29,20 @@ angular.module('dsapi.services', [], ['$provide', function($provide) {
 
         /* resolve service instance */
         deferred.resolve(service);
+      })
+      .error(function(data, status, headers, config) {
+        if (status == 404) {
+          $http.get('/datasets')
+          .success(function(data) {
+            datasets.pushMany(data);
+
+            /* resolve service instance */
+            deferred.resolve(service);
+          });
+        } else {
+          /* reject service instance */
+          deferred.reject('Error loading datasets list.');
+        }
       });
 
     return deferred.promise;
