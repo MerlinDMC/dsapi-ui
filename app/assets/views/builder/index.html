@@ -1,4 +1,8 @@
-<div class="alert alert-info">
+<div class="well well-sm">
+	<a href="/api/export/{{dataset.uuid}}" class="pull-right" title="export as tar-archive">
+		<span class="glyphicon glyphicon-cloud-download"></span>
+	</a>
+
 	<dl class="dl-horizontal">
 		<dt>Name:</dt>
 		<dd>{{dataset.name}}</dd>
@@ -17,39 +21,39 @@
 	<fieldset><!-- settings -->
 		<legend>settings</legend>
 
-		<div class="control-group">
-			<label class="control-label" for="ds-alias">Alias</label>
-			<div class="controls">
-				<input type="text" id="ds-alias" class="input-xxlarge" placeholder="make sure it's awesome" ng-model="form.settings.alias">
+		<div class="form-group">
+			<label class="col-sm-3 col-md-2 control-label" for="ds-alias">Alias</label>
+			<div class="col-sm-5 col-md-6">
+				<input type="text" id="ds-alias" class="form-control" placeholder="make sure it's awesome" ng-model="form.settings.alias">
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="ds-hostname">Hostname</label>
-			<div class="controls">
-				<input type="text" id="ds-hostname" class="input-xxlarge" placeholder="awesome" ng-model="form.settings.hostname">
+		<div class="form-group">
+			<label class="col-sm-3 col-md-2 control-label" for="ds-hostname">Hostname</label>
+			<div class="col-sm-5 col-md-6">
+				<input type="text" id="ds-hostname" class="form-control" placeholder="awesome" ng-model="form.settings.hostname">
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="ds-domain">DNS-Domain</label>
-			<div class="controls">
-				<input type="text" id="ds-domain" class="input-xxlarge" placeholder="example.com" ng-model="form.settings.dns_domain">
+		<div class="form-group">
+			<label class="col-sm-3 col-md-2 control-label" for="ds-domain">DNS-Domain</label>
+			<div class="col-sm-5 col-md-6">
+				<input type="text" id="ds-domain" class="form-control" placeholder="example.com" ng-model="form.settings.dns_domain">
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="ds-resolvers">Resolvers</label>
-			<div class="controls">
-				<input type="text" id="ds-resolvers" class="input-xxlarge" placeholder="8.8.8.8, 8.8.4.4" ng-model="form.settings.resolvers">
+		<div class="form-group">
+			<label class="col-sm-3 col-md-2 control-label" for="ds-resolvers">Resolvers</label>
+			<div class="col-sm-5 col-md-6">
+				<input type="text" id="ds-resolvers" class="form-control" placeholder="8.8.8.8, 8.8.4.4" ng-model="form.settings.resolvers">
 			</div>
 		</div>
 
 		<div ng-show="isJoyent()">
 			<!-- joyent / ram -->
-			<div class="control-group">
-				<label class="control-label" for="ds-memory">Memory</label>
-				<div class="controls">
-					<div class="input-append">
-						<input type="text" id="ds-memory" class="input-small" placeholder="256" ng-model="form.settings.max_physical_memory">
-						<span class="add-on">MB</span>
+			<div class="form-group">
+				<label class="col-sm-3 col-md-2 control-label" for="ds-memory">Memory</label>
+				<div class="col-sm-5 col-md-6">
+					<div class="input-group">
+						<span class="input-group-addon">MB</span>
+						<input type="text" id="ds-memory" class="form-control" placeholder="256" ng-model="form.settings.max_physical_memory">
 					</div>
 				</div>
 			</div>
@@ -57,52 +61,52 @@
 
 		<div ng-show="isKVM()">
 			<!-- kvm / ram -->
-			<div class="control-group">
-				<label class="control-label" for="ds-ram">Ram</label>
-				<div class="controls">
-					<div class="input-append">
-						<input type="text" id="ds-ram" class="input-small" placeholder="256" ng-model="form.settings.ram">
-						<span class="add-on">MB</span>
+			<div class="form-group">
+				<label class="col-sm-3 col-md-2 control-label" for="ds-ram">Ram</label>
+				<div class="col-sm-5 col-md-6">
+					<div class="input-group">
+						<span class="input-group-addon">MB</span>
+						<input type="text" id="ds-ram" class="form-control" placeholder="256" ng-model="form.settings.ram">
 					</div>
-					<span class="help-inline">every KVM guest will add a 1024MB overhead for internal use</span>
+					<p class="help-block">every KVM guest will add a 1024MB overhead for internal use</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="controls">
+		<div class="col-sm-offset-2">
 			<p>
-				<i class="icon icon-chevron-down"></i>
-				<a href="#sub-autoboot" data-toggle="collapse">more options</a>
+				<span class="glyphicon glyphicon-chevron-down"></span>
+				<a href="#sub-settings-extended" data-toggle="collapse">more options</a>
 			</p>
 		</div>
 
-		<div id="sub-autoboot" class="collapse">
+		<div id="sub-settings-extended" class="collapse">
 			<div ng-show="isJoyent()">
 				<!-- joyent / swap + tmpfs + quota -->
-				<div class="control-group">
-					<label class="control-label" for="ds-swap">Swap</label>
-					<div class="controls">
-						<div class="input-append">
-							<input type="text" id="ds-swap" class="input-small" placeholder="256" ng-model="form.settings.max_swap">
-							<span class="add-on">MB</span>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label" for="ds-swap">Swap</label>
+					<div class="col-sm-5 col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">MB</span>
+							<input type="text" id="ds-swap" class="form-control" placeholder="256" ng-model="form.settings.max_swap">
 						</div>
 					</div>
 				</div>
-				<div class="control-group">
-					<label class="control-label" for="ds-tmpfs">tmpfs</label>
-					<div class="controls">
-						<div class="input-append">
-							<input type="text" id="ds-tmpfs" class="input-small" placeholder="256" ng-model="form.settings.tmpfs">
-							<span class="add-on">MB</span>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label" for="ds-tmpfs">tmpfs</label>
+					<div class="col-sm-5 col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">MB</span>
+							<input type="text" id="ds-tmpfs" class="form-control" placeholder="256" ng-model="form.settings.tmpfs">
 						</div>
 					</div>
 				</div>
-				<div class="control-group">
-					<label class="control-label" for="ds-quota">Quota</label>
-					<div class="controls">
-						<div class="input-append">
-							<input type="text" id="ds-quota" class="input-small" placeholder="10" ng-model="form.settings.quota">
-							<span class="add-on">GB</span>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label" for="ds-quota">Quota</label>
+					<div class="col-sm-5 col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">GB</span>
+							<input type="text" id="ds-quota" class="form-control" placeholder="10" ng-model="form.settings.quota">
 						</div>
 					</div>
 				</div>
@@ -110,57 +114,59 @@
 
 			<div ng-show="isKVM()">
 				<!-- kvm / cpu-type + vcpus -->
-				<div class="control-group">
-					<label class="control-label" for="ds-cpu_type">CPU-Type</label>
-					<div class="controls">
-						<label class="radio inline" ng-repeat="type in valid_cpu_types">
-							<input type="radio" name="cpu_type" ng-value="type" ng-model="form.settings.cpu_type"> {{type}}
-						</label>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label" for="ds-cpu_type">CPU-Type</label>
+					<div class="col-sm-5 col-md-6">
+						<div class="input-group">
+							<label class="radio-inline" ng-repeat="type in valid_cpu_types">
+								<input type="radio" name="cpu_type" ng-value="type" ng-model="form.settings.cpu_type"> {{type}}
+							</label>
+						</div>
 					</div>
 				</div>
 
-				<div class="control-group">
-					<label class="control-label" for="ds-vcpus">vCPUs</label>
-					<div class="controls">
-						<div class="input-prepend">
-							<span class="add-on">count</span>
-							<input type="text" id="ds-vcpus" class="input-mini" placeholder="1" ng-model="form.settings.vcpus">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-2 control-label" for="ds-vcpus">vCPUs</label>
+					<div class="col-sm-5 col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">count</span>
+							<input type="text" id="ds-vcpus" class="form-control" placeholder="1" ng-model="form.settings.vcpus">
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="control-group">
-				<label class="control-label" for="ds-cpu_cap">CPU-Cap</label>
-				<div class="controls">
-					<div class="input-append">
-						<input type="text" id="ds-cpu_cap" class="input-mini" placeholder="100" ng-model="form.settings.cpu_cap">
-						<span class="add-on">%</span>
+			<div class="form-group">
+				<label class="col-sm-3 col-md-2 control-label" for="ds-cpu_cap">CPU-Cap</label>
+				<div class="col-sm-5 col-md-6">
+					<div class="input-group">
+						<span class="input-group-addon">%</span>
+						<input type="text" id="ds-cpu_cap" class="form-control" placeholder="100" ng-model="form.settings.cpu_cap">
 					</div>
 				</div>
 			</div>
 
-			<div class="control-group">
-				<label class="control-label" for="ds-cpu_shares">CPU-Shares</label>
-				<div class="controls">
-					<input type="text" id="ds-cpu_shares" class="input-mini" placeholder="100" ng-model="form.settings.cpu_shares">
+			<div class="form-group">
+				<label class="col-sm-3 col-md-2 control-label" for="ds-cpu_shares">CPU-Shares</label>
+				<div class="col-sm-5 col-md-6">
+					<input type="text" id="ds-cpu_shares" class="form-control" placeholder="100" ng-model="form.settings.cpu_shares">
 				</div>
 			</div>
 
-			<div class="control-group">
-				<label class="control-label" for="ds-max_lwps">LWPs</label>
-				<div class="controls">
-					<input type="text" id="ds-max_lwps" class="input-mini" placeholder="2000" ng-model="form.settings.max_lwps">
+			<div class="form-group">
+				<label class="col-sm-3 col-md-2 control-label" for="ds-max_lwps">LWPs</label>
+				<div class="col-sm-5 col-md-6">
+					<input type="text" id="ds-max_lwps" class="form-control" placeholder="2000" ng-model="form.settings.max_lwps">
 				</div>
 			</div>
 
-			<div class="control-group">
-				<label class="control-label">Autoboot</label>
-				<div class="controls">
-					<label class="radio inline">
+			<div class="form-group">
+				<label class="col-sm-3 col-md-2 control-label">Autoboot</label>
+				<div class="col-sm-5 col-md-6">
+					<label class="radio-inline">
 						<input type="radio" name="ds-autoboot" ng-value="true" ng-model="form.settings.autoboot"> Yes
 					</label>
-					<label class="radio inline">
+					<label class="radio-inline">
 						<input type="radio" name="ds-autoboot" ng-value="false" ng-model="form.settings.autoboot"> No
 					</label>
 				</div>
@@ -174,33 +180,32 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th></th>
-					<th>ip</th>
-					<th>netmask</th>
-					<th>gateway</th>
-					<th></th>
-					<th></th>
+					<th class="col-sm-3" colspan="2">ip</th>
+					<th class="col-sm-2">netmask</th>
+					<th class="col-sm-2">gateway</th>
+					<th class="col-sm-2"></th>
+					<th class="col-sm-3"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="nic in form.nics">
-					<td><i class="icon icon-ok" ng-show="nic.primary"></i></td>
+					<td class="col-sm-1"><span class="glyphicon glyphicon-ok" ng-show="nic.primary"></span></td>
 					<td>{{nic.ip}}</td>
 					<td>{{nic.netmask}}</td>
 					<td>{{nic.gateway}}</td>
 					<td ng-switch on="nic.nic_tag">
-						<span ng-switch-when="admin" class="label label-important">admin</span>
+						<span ng-switch-when="admin" class="label label-danger">admin</span>
 						<span ng-switch-when="external" class="label label-success">external</span>
 						<span ng-switch-default class="label label-info">{{nic.nic_tag}}</span>
 					</td>
 					<td>
 						<div class="pull-right">
 							<a href="#edit-nic-settings" data-toggle="modal" ng-click="editNic(nic)">
-								<i class="icon-edit"></i>
+								<span class="glyphicon glyphicon-edit"></span>
 								edit
 							</a>
 							<a ng-click="removeNic(nic)">
-								<i class="icon-minus"></i>
+								<span class="glyphicon glyphicon-minus"></span>
 								remove
 							</a>
 						</div>
@@ -209,7 +214,7 @@
 				<tr class="success">
 					<td colspan="6">
 						<a href="#edit-nic-settings" data-toggle="modal" ng-click="addNic()">
-							<i class="icon-plus-sign"></i>
+							<span class="glyphicon glyphicon-plus-sign"></span>
 							create new
 						</a>
 					</td>
@@ -218,93 +223,99 @@
 		</table>
 
 		<!-- edit nic modal -->
-		<div id="edit-nic-settings" class="modal hide fade" tabindex="-1" role="dialog">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveNic(temp)">&times;</button>
-				<h3>nic settings</h3>
-			</div>
-			<div class="modal-body">
-				<div class="control-group">
-					<label class="control-label">IP</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="dhcp | aaa.bbb.ccc.ddd" ng-model="temp.ip">
+		<div id="edit-nic-settings" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveNic(temp)">&times;</button>
+						<h3>nic settings</h3>
 					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Netmask</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="aaa.bbb.ccc.ddd" ng-model="temp.netmask">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Gateway</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="aaa.bbb.ccc.ddd" ng-model="temp.gateway">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">NIC-Tag</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="admin|external" ng-model="temp.nic_tag">
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-						<label class="checkbox">
-							<input type="checkbox" ng-value="true" ng-model="temp.primary"> Primary
-						</label>
-					</div>
-				</div>
 
-				<div class="controls">
-					<p>
-						<i class="icon icon-chevron-down"></i>
-						<a href="#sub-nic-settings" data-toggle="collapse">more options</a>
-					</p>
-				</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">IP</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="dhcp | aaa.bbb.ccc.ddd" ng-model="temp.ip">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Netmask</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="aaa.bbb.ccc.ddd" ng-model="temp.netmask">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Gateway</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="aaa.bbb.ccc.ddd" ng-model="temp.gateway">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">NIC-Tag</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="admin|external" ng-model="temp.nic_tag">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-2 col-md-2">
+								<label class="checkbox">
+									<input type="checkbox" ng-value="true" ng-model="temp.primary"> Primary
+								</label>
+							</div>
+						</div>
 
-				<div id="sub-nic-settings" class="collapse">
-					<div class="control-group">
-						<label class="control-label">MAC</label>
-						<div class="controls">
-							<input type="text" class="input-medium" placeholder="aa:bb:cc:dd:ee:ff" ng-model="temp.mac">
+						<div class="col-sm-offset-2">
+							<p>
+								<span class="glyphicon glyphicon-chevron-down"></span>
+								<a href="#sub-nic-settings" data-toggle="collapse">more options</a>
+							</p>
+						</div>
+
+						<div id="sub-nic-settings" class="collapse">
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">MAC</label>
+								<div class="col-sm-9 col-md-10">
+									<input type="text" class="form-control" placeholder="aa:bb:cc:dd:ee:ff" ng-model="temp.mac">
+								</div>
+							</div>
+
+							<div class="form-group" ng-show="isKVM()">
+								<label class="col-sm-3 col-md-2 control-label">Model</label>
+								<div class="col-sm-9 col-md-10">
+									<label class="radio-inline" ng-repeat="type in valid_nic_models">
+										<input type="radio" name="nic_model" ng-value="type" ng-model="temp.model"> {{type}}
+									</label>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">VLAN-Id</label>
+								<div class="col-sm-9 col-md-10">
+									<input type="text" class="form-control" placeholder="0-4095" ng-model="temp.vlan_id">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">Options</label>
+								<div class="col-sm-9 col-md-10">
+									<label class="checkbox">
+										<input type="checkbox" ng-value="true" ng-model="temp.allow_ip_spoofing"> allow IP spoofing
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" ng-value="true" ng-model="temp.allow_mac_spoofing"> allow MAC spoofing
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" ng-value="true" ng-model="temp.allow_restricted_traffic"> allow restricted traffic
+									</label>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div class="control-group" ng-show="isKVM()">
-						<label class="control-label">Model</label>
-						<div class="controls">
-							<label class="radio inline" ng-repeat="type in valid_nic_models">
-								<input type="radio" name="nic_model" ng-value="type" ng-model="temp.model"> {{type}}
-							</label>
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label">VLAN-Id</label>
-						<div class="controls">
-							<input type="text" class="input-medium" placeholder="0-4095" ng-model="temp.vlan_id">
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label">Options</label>
-						<div class="controls">
-							<label class="checkbox">
-								<input type="checkbox" ng-value="true" ng-model="temp.allow_ip_spoofing"> allow IP spoofing
-							</label>
-							<label class="checkbox">
-								<input type="checkbox" ng-value="true" ng-model="temp.allow_mac_spoofing"> allow MAC spoofing
-							</label>
-							<label class="checkbox">
-								<input type="checkbox" ng-value="true" ng-model="temp.allow_restricted_traffic"> allow restricted traffic
-							</label>
-						</div>
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveNic(temp)">OK</a>
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveNic(temp)">OK</a>
 			</div>
 		</div>
 	</fieldset><!-- /nics -->
@@ -329,11 +340,11 @@
 					<td>
 						<div class="pull-right">
 							<a href="#edit-fs-settings" data-toggle="modal" ng-click="editFilesystem(fs)">
-								<i class="icon-edit"></i>
+								<span class="glyphicon glyphicon-edit"></span>
 								edit
 							</a>
 							<a ng-click="removeFilesystem(fs)">
-								<i class="icon-minus"></i>
+								<span class="glyphicon glyphicon-minus"></span>
 								remove
 							</a>
 						</div>
@@ -342,7 +353,7 @@
 				<tr class="success">
 					<td colspan="4">
 						<a href="#edit-fs-settings" data-toggle="modal" ng-click="addFilesystem()">
-							<i class="icon-plus-sign"></i>
+							<span class="glyphicon glyphicon-plus-sign"></span>
 							create new
 						</a>
 					</td>
@@ -351,51 +362,57 @@
 		</table>
 
 		<!-- edit filesystem modal -->
-		<div id="edit-fs-settings" class="modal hide fade" tabindex="-1" role="dialog">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveFilesystem(temp)">&times;</button>
-				<h3>filesystem settings</h3>
-			</div>
-			<div class="modal-body">
-				<div class="control-group">
-					<label class="control-label">Type</label>
-					<div class="controls">
-						<label class="radio inline" ng-repeat="type in valid_filesystem_types">
-							<input type="radio" name="fs_type" ng-value="type" ng-model="temp.type"> {{type}}
-						</label>
+		<div id="edit-fs-settings" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveFilesystem(temp)">&times;</button>
+						<h3>filesystem settings</h3>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Type</label>
+							<div class="col-sm-9 col-md-10">
+								<label class="radio-inline" ng-repeat="type in valid_filesystem_types">
+									<input type="radio" name="fs_type" ng-value="type" ng-model="temp.type"> {{type}}
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Source</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="/..." ng-model="temp.source">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Target</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="/data" ng-model="temp.target">
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveFilesystem(temp)">OK</a>
 					</div>
 				</div>
-				<div class="control-group">
-					<label class="control-label">Source</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="/..." ng-model="temp.source">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Target</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="/data" ng-model="temp.target">
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveFilesystem(temp)">OK</a>
 			</div>
 		</div>
 	</fieldset><!-- /filesystems -->
 
 	<fieldset ng-show="isKVM()"><!-- disks -->
 		<legend>disks</legend>
-		<p class="muted">Add additional disks for your VM. The boot drive is specified by the dataset and should not be changed from the defaults.</p>
-		<p class="muted">The first additional disk will be automatically formated and mounted at <code>/data</code> with most datasets.</p>
+		<p class="text-muted">Add additional disks for your VM. The boot drive is specified by the dataset and should not be changed from the defaults.</p>
+		<p class="text-muted">The first additional disk will be automatically formated and mounted at <code>/data</code> with most datasets.</p>
 
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>model</th>
-					<th>size (MB)</th>
-					<th>compression</th>
-					<th></th>
+					<th class="col-sm-3">model</th>
+					<th class="col-sm-2">size (MB)</th>
+					<th class="col-sm-2">compression</th>
+					<th class="col-sm-5"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -406,11 +423,11 @@
 					<td>
 						<div class="pull-right">
 							<a href="#edit-disk-settings" data-toggle="modal" ng-click="editDisk(disk)">
-								<i class="icon-edit"></i>
+								<span class="glyphicon glyphicon-edit"></span>
 								edit
 							</a>
 							<a ng-click="removeDisk(disk)">
-								<i class="icon-minus"></i>
+								<span class="glyphicon glyphicon-minus"></span>
 								remove
 							</a>
 						</div>
@@ -419,7 +436,7 @@
 				<tr class="success">
 					<td colspan="4">
 						<a href="#edit-disk-settings" data-toggle="modal" ng-click="addDisk()">
-							<i class="icon-plus-sign"></i>
+							<span class="glyphicon glyphicon-plus-sign"></span>
 							create new
 						</a>
 					</td>
@@ -428,35 +445,41 @@
 		</table>
 
 		<!-- edit disk modal -->
-		<div id="edit-disk-settings" class="modal hide fade" tabindex="-1" role="dialog">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveDisk(temp)">&times;</button>
-				<h3>disk settings</h3>
-			</div>
-			<div class="modal-body">
-				<div class="control-group">
-					<label class="control-label">Model</label>
-					<div class="controls">
-						<label class="radio inline" ng-repeat="type in valid_disk_models">
-							<input type="radio" name="disk_model" ng-value="type" ng-model="temp.model"> {{type}}
-						</label>
+		<div id="edit-disk-settings" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveDisk(temp)">&times;</button>
+						<h3>disk settings</h3>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Model</label>
+							<div class="col-sm-9 col-md-10">
+								<label class="radio-inline" ng-repeat="type in valid_disk_models">
+									<input type="radio" name="disk_model" ng-value="type" ng-model="temp.model"> {{type}}
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Size</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" placeholder="10240" ng-model="temp.size">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Compression</label>
+							<div class="col-sm-9 col-md-10">
+								<select class="form-control" ng-model="temp.compression" ng-options="c.type as c.type group by c.group for c in valid_disk_compressions"></select>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveDisk(temp)">OK</a>
 					</div>
 				</div>
-				<div class="control-group">
-					<label class="control-label">Size</label>
-					<div class="controls">
-						<input type="text" class="input-medium" placeholder="10240" ng-model="temp.size">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Compression</label>
-					<div class="controls">
-						<select ng-model="temp.compression" ng-options="c.type as c.type group by c.group for c in valid_disk_compressions"></select>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveDisk(temp)">OK</a>
 			</div>
 		</div>
 	</fieldset><!-- /disks -->
@@ -467,10 +490,10 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Value</th>
-					<th>type</th>
-					<th></th>
+					<th class="col-sm-3">Name</th>
+					<th class="col-sm-5">Value</th>
+					<th class="col-sm-2">type</th>
+					<th class="col-sm-2"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -486,11 +509,11 @@
 					<td>
 						<div class="pull-right">
 							<a href="#edit-md-settings" data-toggle="modal" ng-click="editMetadata(md)">
-								<i class="icon-edit"></i>
+								<span class="glyphicon glyphicon-edit"></span>
 								edit
 							</a>
 							<a ng-click="removeMetadata(md)">
-								<i class="icon-minus"></i>
+								<span class="glyphicon glyphicon-minus"></span>
 								remove
 							</a>
 						</div>
@@ -499,7 +522,7 @@
 				<tr class="success">
 					<td colspan="4">
 						<a href="#edit-md-settings" data-toggle="modal" ng-click="addMetadata()">
-							<i class="icon-plus-sign"></i>
+							<span class="glyphicon glyphicon-plus-sign"></span>
 							create new
 						</a>
 					</td>
@@ -508,62 +531,69 @@
 		</table>
 
 		<!-- edit metadata modal -->
-		<div id="edit-md-settings" class="modal modal-large hide fade" tabindex="-1" role="dialog">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveMetadata(temp)">&times;</button>
-				<h3>metadata settings</h3>
-			</div>
-			<div class="modal-body">
-				<div class="control-group">
-					<div class="controls">
-						<select ng-model="form._selected_metadata" ng-change="addMetadata(form._selected_metadata)" ng-options="md.title group by md.group for md in dataset.metadata">
-							<option value="">-- choose from template --</option>
-						</select>
+		<div id="edit-md-settings" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="saveMetadata(temp)">&times;</button>
+						<h3>metadata settings</h3>
 					</div>
-				</div>
 
-				<div class="control-group">
-					<div class="controls">
-						<p class="muted">{{temp.description}}</p>
-					</div>
-				</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<select class="form-control" ng-model="form._selected_metadata" ng-change="addMetadata(form._selected_metadata)" ng-options="md.title group by md.group for md in dataset.metadata">
+									<option value="">-- choose from template --</option>
+								</select>
+								<p class="form-control-static text-muted">{{temp.description}}</p>
+							</div>
+						</div>
 
-				<div class="control-group">
-					<label class="control-label">Name</label>
-					<div class="controls">
-						<input type="text" class="input-xxlarge" ng-model="temp.name">
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Name</label>
+							<div class="col-sm-9 col-md-10">
+								<input type="text" class="form-control" ng-model="temp.name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 col-md-2 control-label">Value</label>
+							<div class="col-sm-9 col-md-10">
+								<textarea rows="8" class="form-control" ng-model="temp.value"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveMetadata(temp)">OK</a>
 					</div>
 				</div>
-				<div class="control-group">
-					<label class="control-label">Value</label>
-					<div class="controls">
-						<textarea rows="8" class="input-xxlarge" ng-model="temp.value"></textarea>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#" data-dismiss="modal" class="btn btn-primary" ng-click="saveMetadata(temp)">OK</a>
 			</div>
 		</div>
 	</fieldset><!-- /metadata -->
 </form>
 
-<div class="form-actions">
-	<button type="button" class="btn" data-toggle="modal" data-target="#show-json" ng-click="generateJson()">generate JSON</button>
+<div>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-json" ng-click="generateJson()">generate JSON</button>
 
 	<!-- get json modal -->
-	<div id="show-json" class="modal hide fade" tabindex="-1" role="dialog">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3>your json</h3>
-		</div>
-		<div class="modal-body">
-			<textarea rows="10" class="span6">{{json_pretty}}</textarea>
-		</div>
-		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-			<button class="btn btn-info" ng-click="changeOutput('json')">Json</button>
-			<button class="btn btn-success" ng-click="changeOutput('shell')">Shell</button>
+	<div id="show-json" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3>your json</h3>
+				</div>
+
+				<div class="modal-body">
+					<textarea rows="12" readonly="readonly" class="form-control">{{json_pretty}}</textarea>
+				</div>
+
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn btn-info" ng-click="changeOutput('json')">Json</button>
+					<button class="btn btn-success" ng-click="changeOutput('shell')">Shell</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

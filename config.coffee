@@ -15,18 +15,18 @@ exports.config =
 
           'vendor/angular/angular.js'
 
-          'vendor/bootstrap/js/bootstrap-transition.js'
-          'vendor/bootstrap/js/bootstrap-alert.js'
-          'vendor/bootstrap/js/bootstrap-button.js'
-          'vendor/bootstrap/js/bootstrap-carousel.js'
-          'vendor/bootstrap/js/bootstrap-collapse.js'
-          'vendor/bootstrap/js/bootstrap-dropdown.js'
-          'vendor/bootstrap/js/bootstrap-modal.js'
-          'vendor/bootstrap/js/bootstrap-tooltip.js'
-          'vendor/bootstrap/js/bootstrap-popover.js'
-          'vendor/bootstrap/js/bootstrap-scrollspy.js'
-          'vendor/bootstrap/js/bootstrap-tab.js'
-          'vendor/bootstrap/js/bootstrap-typeahed.js'
+          'vendor/bootstrap/js/transition.js'
+          'vendor/bootstrap/js/alert.js'
+          'vendor/bootstrap/js/button.js'
+          'vendor/bootstrap/js/carousel.js'
+          'vendor/bootstrap/js/collapse.js'
+          'vendor/bootstrap/js/dropdown.js'
+          'vendor/bootstrap/js/modal.js'
+          'vendor/bootstrap/js/tooltip.js'
+          'vendor/bootstrap/js/popover.js'
+          'vendor/bootstrap/js/scrollspy.js'
+          'vendor/bootstrap/js/tab.js'
+          'vendor/bootstrap/js/typeahed.js'
         ]
         after: []
     stylesheets:

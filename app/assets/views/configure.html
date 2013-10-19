@@ -1,24 +1,27 @@
-<div>
-	<h4>howto use the generator</h4>
-	<p class="muted">To open the configurator just klick on a dataset you want to use and fill out the configuration form.<br />
-		As soon as you're done klick the generate button at the end of the formular.</p>
+<div class="panel panel-default">
+	<div class="panel-heading">howto use the generator</div>
+	<div class="panel-body">
+		<p class="text-muted">To open the configurator just klick on a dataset you want to use and fill out the configuration form.<br />
+			As soon as you're done klick the generate button at the end of the formular.</p>
+	</div>
 </div>
 
 <form class="form-inline">
-	<div class="input-prepend">
-		<span class="add-on">Search</span>
-		<input id="dataset-filter" type="text" ng-model="query" class="input-xxlarge">
+	<div class="input-group">
+		<span class="input-group-addon">Search</span>
+		<input id="dataset-filter" type="text" ng-model="query" class="form-control">
 	</div>
 </form>
 
 <table class="table table-condensed table-hover table-striped table-pointer">
+	<caption>&nbsp;</caption>
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Version</th>
-			<th>OS</th>
-			<th>Published</th>
-			<th></th>
+			<th class="col-sm-7 col-xs-9">Name</th>
+			<th class="col-sm-1">Version</th>
+			<th class="col-sm-1">OS</th>
+			<th class="col-sm-2 hidden-xs">Published</th>
+			<th class="col-sm-1"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,9 +29,9 @@
 			<td>{{ds.name}}</td>
 			<td>{{ds.version}}</td>
 			<td>{{ds.os}}</td>
-			<td date-from-now="ds.published_at">{{ds.published_at}}</td>
+			<td class="hidden-xs" date-from-now="ds.published_at">{{ds.published_at}}</td>
 			<td ng-switch on="ds.getCreator()">
-				<span ng-switch-when="community" class="label label-info">community</span>
+				<span ng-switch-when="community" class="label label-primary">community</span>
 			</td>
 		</tr>
 	</tbody>

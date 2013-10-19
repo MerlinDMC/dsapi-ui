@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron text-center">
 	<h1>Datasets for SmartOS!</h1>
 	<p class="lead">most of the datasets provided are build by <a href="http://www.joyent.com/" target="_blank">joyent</a>
 		<br />
@@ -10,11 +10,11 @@
 		<caption><h3 align="left">latest versions</h3></caption>
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Version</th>
-				<th>OS</th>
-				<th>Published</th>
-				<th></th>
+				<th class="col-sm-7 col-xs-9">Name</th>
+				<th class="col-sm-1">Version</th>
+				<th class="col-sm-1">OS</th>
+				<th class="col-sm-2 hidden-xs">Published</th>
+				<th class="col-sm-1"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,9 +22,9 @@
 				<td>{{ds.name}}</td>
 				<td>{{ds.version}}</td>
 				<td>{{ds.os}}</td>
-				<td date-from-now="ds.published_at">{{ds.published_at}}</td>
+				<td class="hidden-xs" date-from-now="ds.published_at">{{ds.published_at}}</td>
 				<td ng-switch on="ds.getCreator()">
-					<span ng-switch-when="community" class="label label-info">community</span>
+					<span ng-switch-when="community" class="label label-primary">community</span>
 				</td>
 			</tr>
 		</tbody>
