@@ -249,6 +249,16 @@ function DatasetJsonGenerator(dataset) {
   var brand = _dataset.getBrand();
 
   /**
+   * normalize stuff a bit if we're consuming a api/datasets backend
+   */
+  if (_dataset.manifest.hasOwnProperty('options')) {
+    _dataset.manifest['cpu_type'] = _dataset.manifest['options']['cpu_type'];
+    _dataset.manifest['disk_driver'] = _dataset.manifest['options']['disk_driver'];
+    _dataset.manifest['nic_driver'] = _dataset.manifest['options']['nic_driver'];
+    _dataset.manifest['image_size'] = _dataset.manifest['options']['image_size'];
+  }
+
+  /**
    * type: boolean|integer|string|array
    */
   var _json_option_rules = {
