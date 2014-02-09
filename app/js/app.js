@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dsapi', [ 'dsapi.services', 'dsapi.directives', 'dsapi.bootstrap', 'dsapi.filters' ])
+angular.module('dsapi', [ 'ngRoute', 'dsapi.services', 'dsapi.directives', 'dsapi.bootstrap', 'dsapi.filters' ])
   .config(['$locationProvider', '$routeProvider', function($location, $routeProvider) {
     $location.hashPrefix('!');
 
