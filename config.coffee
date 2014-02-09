@@ -35,7 +35,6 @@ exports.config =
         'css/app.css': /^(app|vendor)/
       order:
         before: [
-          'app/less/_theme.less'
           'app/less/bootstrap.less'
           'app/less/app.less'
         ]
