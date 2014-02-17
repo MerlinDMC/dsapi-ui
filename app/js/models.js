@@ -70,6 +70,7 @@ function Dataset(data) {
     'version',
     'os',
     'description',
+    'homepage',
     'uuid',
     'published_at',
     'stats_info'

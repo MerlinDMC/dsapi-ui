@@ -12,8 +12,10 @@
 		<dd>{{dataset.description}}</dd>
 		<dt>Published:</dt>
 		<dd date-from-now="dataset.published_at">{{dataset.published_at}}</dd>
-		<dt>Snatched:</dt>
-		<dd>{{dataset.stats_info['downloaded']}} times</dd>
+		<dt ng-show="dataset.stats_info['downloaded']">Snatched:</dt>
+		<dd ng-show="dataset.stats_info['downloaded']">{{dataset.stats_info['downloaded']}} times</dd>
+		<dt ng-show="dataset.homepage">Homepage:</dt>
+		<dd ng-show="dataset.homepage"><a href="{{dataset.homepage}}" target="_blank">{{dataset.homepage}}</a></dd>
 	</dl>
 </div>
 
