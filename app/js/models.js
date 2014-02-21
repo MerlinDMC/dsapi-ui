@@ -65,6 +65,23 @@ function Dataset(data) {
     return 'joyent';
   };
 
+  this.getDownloadSize = function() {
+    var niceBytes = function (bytes) {
+      if (bytes == 0) return 'n/a';
+      var sizes = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
+      i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+      return Math.round(bytes / Math.pow(1024, i), 2) + sizes[i];
+    };
+
+    var download_size = 0;
+
+    for (var i = 0; i < data.files.length; i++) {
+      download_size += data.files[i].size;
+    }
+
+    return niceBytes(download_size);
+  };
+
   var i, proxy_attrs = [
     'name',
     'version',
