@@ -99,7 +99,8 @@ function Dataset(data) {
   }));
 
   if (this.getBrand() === 'kvm') {
-    if (this.manifest.hasOwnProperty('requirements') && this.manifest.requirements.ssh_key) {
+    if (this.manifest.hasOwnProperty('requirements') && this.manifest.requirements &&
+        this.manifest.requirements.hasOwnProperty('ssh_key') && this.manifest.requirements.ssh_key) {
       this.metadata.push(new MetadataOption({
         'group': 'password',
         'title': 'SSH-PubKey',
