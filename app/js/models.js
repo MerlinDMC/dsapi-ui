@@ -303,6 +303,11 @@ function DatasetJsonGenerator(dataset) {
       null,
       [ 'kvm', 'joyent' ]
     ],
+    'delegate_dataset': [
+      'boolean',
+      null,
+      [ 'joyent' ]
+    ],
     'dns_domain': [
       'string',
       null,
