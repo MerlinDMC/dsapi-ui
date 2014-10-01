@@ -58,6 +58,10 @@ function Dataset(data) {
   };
 
   this.getBrand = function() {
+    if (data.type === 'lx-dataset') {
+      return 'lx';
+    }
+
     if (data.os !== 'smartos') {
       return 'kvm';
     }
@@ -286,22 +290,22 @@ function DatasetJsonGenerator(dataset) {
       function() {
         return _dataset.uuid;
       },
-      [ 'joyent' ]
+      [ 'joyent', 'lx' ]
     ],
     'autoboot': [
       'boolean',
       true,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'alias': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'hostname': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'delegate_dataset': [
       'boolean',
@@ -311,12 +315,12 @@ function DatasetJsonGenerator(dataset) {
     'dns_domain': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'resolvers': [
       'array',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'max_physical_memory': [
       'integer',
@@ -327,7 +331,7 @@ function DatasetJsonGenerator(dataset) {
 
         return 256;
       },
-      [ 'joyent' ]
+      [ 'joyent', 'lx' ]
     ],
     'max_swap': [
       'integer',
@@ -342,7 +346,7 @@ function DatasetJsonGenerator(dataset) {
 
         return result;
       },
-      [ 'joyent' ]
+      [ 'joyent', 'lx' ]
     ],
     'tmpfs': [
       'integer',
@@ -357,22 +361,22 @@ function DatasetJsonGenerator(dataset) {
     'quota': [
       'integer',
       null,
-      [ 'joyent' ]
+      [ 'joyent', 'lx' ]
     ],
     'cpu_cap': [
       'integer',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'cpu_shares': [
       'integer',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'max_lwps': [
       'integer',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'cpu_type': [
       'string',
@@ -390,27 +394,27 @@ function DatasetJsonGenerator(dataset) {
     'nic_tag': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'mac': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'ip': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'netmask': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'gateway': [
       'string',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'model': [
       'string',
@@ -420,27 +424,27 @@ function DatasetJsonGenerator(dataset) {
     'vlan_id': [
       'integer',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'primary': [
       'boolean',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'allow_ip_spoofing': [
       'boolean',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'allow_mac_spoofing': [
       'boolean',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ],
     'allow_restricted_traffic': [
       'boolean',
       null,
-      [ 'kvm', 'joyent' ]
+      [ 'kvm', 'joyent', 'lx' ]
     ]
   };
 

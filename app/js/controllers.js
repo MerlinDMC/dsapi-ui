@@ -295,6 +295,10 @@ function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
     return $scope.dataset && $scope.dataset.getBrand() === 'kvm';
   };
 
+  $scope.isLX = function() {
+    return $scope.dataset && $scope.dataset.getBrand() === 'lx';
+  };
+
   dsapiDatasets.then(function(instance) {
     $scope.dataset = instance.by_uuid($routeParams.uuid);
 

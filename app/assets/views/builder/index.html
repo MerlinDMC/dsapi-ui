@@ -50,7 +50,7 @@
 			</div>
 		</div>
 
-		<div ng-show="isJoyent()">
+		<div ng-show="isJoyent() || isLX()">
 			<!-- joyent / ram -->
 			<div class="form-group">
 				<label class="col-sm-3 col-md-2 control-label" for="ds-memory">Memory</label>
@@ -85,7 +85,7 @@
 		</div>
 
 		<div id="sub-settings-extended" class="collapse">
-			<div ng-show="isJoyent()">
+			<div ng-show="isJoyent() || isLX()">
 				<!-- joyent / swap + tmpfs + quota -->
 				<div class="form-group">
 					<label class="col-sm-3 col-md-2 control-label" for="ds-swap">Swap</label>
