@@ -191,8 +191,11 @@ function DatasetList() {
     latest.length = 0;
 
     for (i in content) {
-      if (!known[content[i].name]) {
-        known[content[i].name] = true;
+      var creator = content[i].getCreator();
+      var key = [content[i].name, creator].join(':');
+
+      if (!known[key]) {
+        known[key] = true;
 
         latest.push(content[i]);
       }
