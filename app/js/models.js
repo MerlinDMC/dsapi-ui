@@ -285,7 +285,7 @@ function DatasetJsonGenerator(dataset) {
   }
 
   /**
-   * type: boolean|integer|string|array
+   * type: boolean|integer|string|list|array
    */
   var _json_option_rules = {
     'image_uuid': [
@@ -321,7 +321,7 @@ function DatasetJsonGenerator(dataset) {
       [ 'kvm', 'joyent', 'lx' ]
     ],
     'resolvers': [
-      'array',
+      'list',
       null,
       [ 'kvm', 'joyent', 'lx' ]
     ],
@@ -404,13 +404,8 @@ function DatasetJsonGenerator(dataset) {
       null,
       [ 'kvm', 'joyent', 'lx' ]
     ],
-    'ip': [
-      'string',
-      null,
-      [ 'kvm', 'joyent', 'lx' ]
-    ],
-    'netmask': [
-      'string',
+    'ips': [
+      'array',
       null,
       [ 'kvm', 'joyent', 'lx' ]
     ],
@@ -540,6 +535,8 @@ function DatasetJsonGenerator(dataset) {
             }
           break;
           case 'array':
+          break;
+          case 'list':
             value = value.toString().split(/[\s,]+/);
             if (!value) {
               value = null;

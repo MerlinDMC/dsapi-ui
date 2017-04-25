@@ -196,18 +196,18 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th class="col-sm-3" colspan="2">ip</th>
-					<th class="col-sm-2">netmask</th>
+					<th class="col-sm-3" colspan="2">ips</th>
 					<th class="col-sm-2">gateway</th>
-					<th class="col-sm-2"></th>
+					<th class="col-sm-2">tag</th>
 					<th class="col-sm-3"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="nic in form.nics">
 					<td class="col-sm-1"><span class="glyphicon glyphicon-ok" ng-show="nic.primary"></span></td>
-					<td>{{nic.ip}}</td>
-					<td>{{nic.netmask}}</td>
+					<td>
+						<div ng-repeat="ip in nic.ips">{{ip}}</div>
+					</td>
 					<td>{{nic.gateway}}</td>
 					<td ng-switch on="nic.nic_tag">
 						<span ng-switch-when="admin" class="label label-danger">admin</span>
@@ -249,15 +249,21 @@
 
 					<div class="modal-body">
 						<div class="form-group">
-							<label class="col-sm-3 col-md-2 control-label">IP</label>
+							<label class="col-sm-3 col-md-2 control-label">IPs</label>
 							<div class="col-sm-9 col-md-10">
-								<input type="text" class="form-control" placeholder="dhcp | aaa.bbb.ccc.ddd" ng-model="temp.ip">
+								<label class="control-label pull-right">
+									<a href="#edit-nic-settings" data-toggle="modal" ng-click="addIp()">
+										<span class="glyphicon glyphicon-plus-sign"></span>
+										add more ips
+									</a>
+								</label>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-sm-3 col-md-2 control-label">Netmask</label>
+						<div class="form-group has-feedback" ng-repeat="ip in temp.ips track by $index">
+							<label class="col-sm-3 col-md-2 control-label"> </label>
 							<div class="col-sm-9 col-md-10">
-								<input type="text" class="form-control" placeholder="aaa.bbb.ccc.ddd" ng-model="temp.netmask">
+								<input type="text" class="form-control" placeholder="aaa.bbb.ccc.ddd/ee | dhcp | addrconf" ng-model="temp.ips[$index]">
+								<div class="form-control-feedback" aria-hidden="true"><a ng-click="removeIp($index)"><span class="glyphicon glyphicon-minus-sign"></span></a></div>
 							</div>
 						</div>
 						<div class="form-group">

@@ -52,12 +52,23 @@ function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
     clearObject($scope.temp);
 
     $scope.temp = {
-      nic_tag: 'admin'
+      nic_tag: 'admin',
+      ips: []
     };
+
+    $scope.temp.ips.push('');
 
     if ($scope.isKVM()) {
       $scope.temp.model = ($scope.dataset.nic_driver ? $scope.dataset.nic_driver : $scope.valid_nic_models[0]);
     }
+  }
+
+  $scope.addIp = function() {
+    $scope.temp.ips.push('');
+  }
+
+  $scope.removeIp = function(data) {
+    $scope.temp.ips.splice(data, 1);
   }
 
   $scope.editNic = function(data) {
@@ -82,7 +93,7 @@ function BuilderCtrl($scope, $routeParams, dsapiDatasets) {
       }
     }
 
-    if (Object.keys(nic).length > 0 && nic.nic_tag && nic.ip) {
+    if (Object.keys(nic).length > 0 && nic.nic_tag && nic.ips.join('').split('').length > 0) {
       if (data._target) {
         delete nic._target;
 
